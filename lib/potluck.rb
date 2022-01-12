@@ -14,10 +14,9 @@ class Potluck
   def get_all_from_category(category)
     @dishes.find_all do |dish|
       dish.category == category
-      # binding.pry
     end
   end
-# binding.pry
+
   def menu
     ordered = @dishes.map do |dish|
        dish.name
@@ -26,9 +25,11 @@ class Potluck
       (dishes.find  do |dish|
         dish.name == name
       end.category.to_s + "s").to_sym
-      # binding.pry
     end
+  end
 
+  def ratio(category)
+    (get_all_from_category(category).count/@dishes.count.to_f)*100
   end
 
 end

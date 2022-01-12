@@ -48,7 +48,6 @@ RSpec.describe  Potluck do
     @potluck.add_dish(@roast_pork)
     @potluck.add_dish(@candy_salad)
 
-# binding.pry
     expect(@potluck.get_all_from_category(:appetizer)).to eq([@couscous_salad, @summer_pizza])
   end
 
@@ -59,7 +58,6 @@ RSpec.describe  Potluck do
     @potluck.add_dish(@roast_pork)
     @potluck.add_dish(@candy_salad)
 
-# binding.pry
     expect(@potluck.get_all_from_category(:appetizer).first.name).to eq("Couscous Salad")
   end
 
@@ -76,8 +74,17 @@ RSpec.describe  Potluck do
                 :desserts=>["Candy Salad"]
               }
 
-# binding.pry
     expect(@potluck.menu).to eq(expected)
   end
 
+  it 'can find the #ratio of the menu' do
+    @potluck.add_dish(@couscous_salad)
+    @potluck.add_dish(@cocktail_meatballs)
+    @potluck.add_dish(@summer_pizza)
+    @potluck.add_dish(@roast_pork)
+    @potluck.add_dish(@candy_salad)
+    @potluck.add_dish(@bean_dip)
+
+    expect(@potluck.ratio(:appetizer)).to eq(50.0)
+  end
 end
